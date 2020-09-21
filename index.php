@@ -56,7 +56,7 @@ header('Access-Control-Allow-Origin: *');
  */
 	//define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
 	define('ENVIRONMENT', 'production');
-	define('ACCESLOGO', 'http://184.73.123.231/img/USNY.png');
+	define('ACCESLOGO', 'https://transmetricsplus.com/img/USNY.png'); //Has to be separate server for some reason
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
