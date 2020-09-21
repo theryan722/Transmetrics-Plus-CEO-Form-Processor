@@ -161,6 +161,8 @@ class renderform extends CI_Controller {
         }
     }
     //===================================================
+    echo 'hello world';
+    /*
     switch ($_POST['formtype']) {
       case 'SERVICENOTE':
         $this->renderForm_SERVICENOTE();
@@ -193,6 +195,7 @@ class renderform extends CI_Controller {
         $this->renderForm_AVMPAR($data);
         break;
     }
+    */
 	}
 	
   
