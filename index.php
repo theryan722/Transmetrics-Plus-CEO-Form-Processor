@@ -56,7 +56,7 @@ header('Access-Control-Allow-Origin: *');
  */
 	//define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
 	define('ENVIRONMENT', 'production');
-	define('ACCESLOGO', 'http://localhost:8080/img/USNY.png');
+	define('ACCESLOGO', 'http://184.73.123.231/img/USNY.png');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
