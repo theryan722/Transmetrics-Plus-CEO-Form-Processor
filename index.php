@@ -111,42 +111,41 @@ function generateform() {
 	}
 	
 	//===================================================
-	
-	switch ($_POST['formtype']) {
-		
-		case 'SERVICENOTE':
-			renderForm_SERVICENOTE();
-			break;
-		case 'MTR':
-			renderForm_MTR();
-			break;
-		  case '127X':
-			renderForm_127X($data);
-			break;
-		  case '125X126X':
-			renderForm_125X126XX($data);
-			break;
-		  case '122X':
-			renderForm_122X($data);
-			break;
-		  case '121X':
-			renderForm_121X($data);
-			break;
-		  case '959X563X':
-			renderForm_959X563X($data);
-			break;
-		  case '110X':
-			renderForm_110X($data);
-			break;
-		  case '124X':
-			renderForm_124X($data);
-			break;
-		  case 'AVMPAR':
-			renderForm_AVMPAR($data);
-			break;
-		default:
-			echo '[CEO Form Processor Server Running]';	
-		
+	if ($_POST['formtype']) {
+		switch ($_POST['formtype']) {
+			case 'SERVICENOTE':
+				renderForm_SERVICENOTE();
+				break;
+			case 'MTR':
+				renderForm_MTR();
+				break;
+			case '127X':
+				renderForm_127X($data);
+				break;
+			case '125X126X':
+				renderForm_125X126XX($data);
+				break;
+			case '122X':
+				renderForm_122X($data);
+				break;
+			case '121X':
+				renderForm_121X($data);
+				break;
+			case '959X563X':
+				renderForm_959X563X($data);
+				break;
+			case '110X':
+				renderForm_110X($data);
+				break;
+			case '124X':
+				renderForm_124X($data);
+				break;
+			case 'AVMPAR':
+				renderForm_AVMPAR($data);
+				break;
+		}
+	} else {
+		echo '[CEO Form Processor Server Running]';	
 	}
 	
 }
