@@ -99,13 +99,11 @@ function generateform() {
 	foreach( $_POST as $key => $postItem ) {
 		
 		if ($postItem === 'Yes') {
-			
 			$_POST[$key] = true;
-			
 		}
 		
 		if ($postItem === 'Off') {
-			
+
 			$_POST[$key] = false;
 			
 		}
@@ -146,6 +144,8 @@ function generateform() {
 		  case 'AVMPAR':
 			renderForm_AVMPAR($data);
 			break;
+		default:
+			echo '[CEO Form Processor Server Running]';	
 		
 	}
 	
