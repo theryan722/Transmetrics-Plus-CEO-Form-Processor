@@ -1,5 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
+define('ACCESLOGO', 'https://transmetricsplus.com/img/USNY.png');
 
 //require_once(dirname(__FILE__) . '\fpdf\fpdf.php');
 
