@@ -5,11 +5,7 @@ define('ACCESLOGO', 'images/USNY.png');
 //require_once(dirname(__FILE__) . '\fpdf\fpdf.php');
 
 require_once('Fpdf.php');
-
 require_once('utilities.php');
-
-
-
 
 generateform();
 
@@ -3246,7 +3242,7 @@ function renderForm_110X($data) {
 	$pdf->Cell(0.25,0.2,'  ','L',0);
 	$pdf->Cell(6.75,0.2,'Detailed Vocational Assessment Report is required to be submitted with the VR-110X.','R',1,'L');
 	
-	$pdf->Cell(0.25,$this->NbLines(6.75, $_POST['15-Briefly_describe_evaluation_process_that_was_utilized*'])*0.2,'  ','L',0);
+	$pdf->Cell(0.25,NbLines($pdf, 6.75, $_POST['15-Briefly_describe_evaluation_process_that_was_utilized*'])*0.2,'  ','L',0);
 	$pdf->MultiCell(6.75,0.2,$_POST['15-Briefly_describe_evaluation_process_that_was_utilized*'],'R','J',0);
 	
 	$pdf->Cell(7.0,0.2,'','LR',1);
@@ -3303,7 +3299,7 @@ function renderForm_110X($data) {
 	
 	$pdf->SetFont('Arial','',11);
 	
-	$pdf->Cell(0.25,$this->NbLines(6.75, $_POST['20-If_not_submitted_within_10_business_days_of_the_service,_explain'])*0.2,'  ','L',0);
+	$pdf->Cell(0.25,NbLines($pdf, 6.75, $_POST['20-If_not_submitted_within_10_business_days_of_the_service,_explain'])*0.2,'  ','L',0);
 	$pdf->MultiCell(6.75,0.2,$_POST['20-If_not_submitted_within_10_business_days_of_the_service,_explain'],'R','J',0);
 	
 	$pdf->Cell(7.0,0.2,'','LR',1);
@@ -3363,7 +3359,7 @@ function renderForm_110X($data) {
 	
 	$pdf->SetFont('Arial','',11);
 	
-	$pdf->Cell(0.25,$this->NbLines(6.75, $_POST['25-If_not_completed_in_full,_explain'])*0.2,'  ','L',0);
+	$pdf->Cell(0.25,NbLines($pdf, 6.75, $_POST['25-If_not_completed_in_full,_explain'])*0.2,'  ','L',0);
 	$pdf->MultiCell(6.75,0.2,$_POST['25-If_not_completed_in_full,_explain'],'R','J',0);
 	
 	$pdf->Cell(7.0,0.2,'','LR',1);
