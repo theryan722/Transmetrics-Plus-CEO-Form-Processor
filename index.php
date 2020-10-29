@@ -134,6 +134,9 @@ function generateform() {
 			case '110X':
 				renderForm_110X($data);
 				break;
+			case '123X':
+				renderForm_123X($data);
+				break;
 			case '124X':
 				renderForm_124X($data);
 				break;
@@ -5907,6 +5910,588 @@ function renderForm_932X937X($data) {
 	$pdf->Cell(0.50,0.2,'Email:', 0, 0, 'L');
 	
 	$pdf->Cell(2.00,0.2,$_POST['37-Email*'], 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	$pdf->Ln();
+	
+	//=	=========================
+	$pdf->Output('report.pdf', 'I');
+	
+}
+
+function renderForm_123X($data) {
+	
+	$pdf = new FPDF('P', 'in', 'Letter');
+
+	$pdf->SetCreator('CEO, Inc.');
+	
+	$pdf->SetAuthor('CEO, Inc.');
+	
+	$pdf->SetTitle('Report');
+	
+	//=	=========================
+	$pdf->AddPage('P','Letter');
+	
+	$pdf->SetFillColor(200,200,200);
+	
+	$pdf->SetMargins(0.75,0.25,0.75);
+	
+	
+	$pdf->Image(ACCESLOGO,3.75,0.25,1.0,1.0);
+	
+	$pdf->Ln(0.85);
+	
+	
+	$pdf->SetFont('Arial','B',10);
+	
+	$pdf->Cell(7.0,0.2,'VR-123X',0,0,'C');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->SetFont('Arial', 'B', 14);
+	
+	$pdf->Cell(7.0,0.2,'Job Preparation Services',0,0,'C');
+	
+	$pdf->Ln(0.3);
+	
+	$pdf->SetFont('Arial','B',13);
+	
+	$pdf->Cell(7.0,0.2,'123X - Self-Advocacy for Employment',0,1,'C');
+	
+	$pdf->Ln(0.3);
+	
+	
+	// 	The section below COMMON-1 is on all documents
+
+	$pdf->SetFont('Arial', '', 10);
+
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'AV#:', 'LTB', 0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(7 digits)','TB', 0, 'L');
+	
+	$pdf->Cell(1.25,0.2,$_POST['1-AV#*'],'TBR', 1, 'L');
+	
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'ACCES-VR ID#:','LTB',0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(6 digits)','TB', 0, 'L');
+	
+	$pdf->Cell(1.25,0.2,$_POST['2-ACCES-VR_ID#*'],'TBR', 1, 'L');
+	
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'CAMS ID #:', 'LTB', 0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(10 digits)', 'TB', 0,'L');
+	
+	$pdf->Cell(1.25,0.2,$_POST['3-CAMS_ID#*'], 'TBR', 1,'L');
+	
+	
+	$pdf->Ln();
+	
+	
+	$pdf->SetFont('Arial','',10);
+	
+	$pdf->Cell(1.2,0.2,'VR District Office:','LT',0,'L');
+	
+	$pdf->Cell(2.3,0.2,$_POST['4-VR_District_Office*'],'TR',0,'L');
+	
+	
+	$pdf->Cell(1.0,0.2,'Provider:','LT',0,'L');
+	
+	$pdf->Cell(2.5,0.2,$_POST['6-Provider*'],'TR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(1.2,0.2,'VRC Name:','LT',0,'L');
+	
+	$pdf->Cell(2.3,0.2,$_POST['5-VRC_Name*'],'TR',0,'L');
+	
+	
+	$pdf->Cell(1.5,0.2,'NYS Fiscal System ID:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,'1000018463','TRB',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(3.5,0.2,'','LTBR',0,'L');
+	
+	$pdf->Cell(1.0,0.2,'Report Date:','LB',0,'L');
+	
+	$pdf->Cell(2.5,0.2,$_POST['8-Report_Date*'],'BR',0,'L');
+	
+	$pdf->Ln();
+	
+	// 	End of COMMON-1 Area
+	// 	Start of COMMON-2a Area  slight variations between forms
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(1.5,0.2,'Participant First Name:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$_POST['9-Participant_First_Name*'],'TBR',0,'L');
+	
+	$pdf->Cell(1.5,0.2,'Participant Last Name:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$_POST['10-Participant_Last_Name*'],'TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(2.0,0.2,'Participant Phone Number: ','LTB',0,'L');
+	
+	$pdf->Cell(5.0,0.2,$_POST['11-Participant_Phone_Number'],'TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(2.0,0.2,'Participant Email Address: ','LTB',0,'L');
+	
+	$pdf->Cell(5.0,0.2,$_POST['12-Participant_Email_Address'],'TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	// 	End of COMMON-2a Area
+
+	$pdf->Ln();
+	
+	// 	Start of CONTENT Area
+	
+	$pdf->Cell(7.0,0.2,'','LTR',1,'C');
+	
+	
+	$pdf->SetFont('Arial','B',11);
+	
+	$pdf->Cell(2.0,0.2,'Units of Service Utilized:','L',0,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	//$	pdf->Cell(0.4,0.2,'',0,0,'L');
+	
+	$pdf->Cell(1.25,0.2,$_POST['13-Units_of_Service_Utilized*'],0,0,'R');
+	
+	$pdf->Cell(3.75,0.2,'','R',1,'C');
+	
+	
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+	
+	
+	$pdf->SetFont('Arial','B',11);
+	
+	$pdf->Cell(2.0,0.2,'Dates of Service:','L',0,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	//$	pdf->Cell(0.4,0.2,'',0,0,'L');
+	
+	$pdf->Cell(4.5,0.2,$_POST['14-Dates_of_Service*'],0,0,'L');
+	
+	$pdf->Cell(0.5,0.2,'','R',1,'C');
+	
+	
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+
+	$pdf->SetFont('Arial','B',11);
+	$pdf->Cell(7.0,0.2,'Was the service provided individually or in a group (no more than 5)?','LR',1,'L');
+	
+	$pdf->Cell(7.0,0.2,'','LR',1);
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(2.00,0.2,'  ','L',0);
+	
+	$pdf->Cell(0.15,0.15, $_POST['15-Was_the_service_provided_individually_or_in_a_group_(no_more_than_5):_Individual'] ? 'X' : ' ', 1, 0, 'C');
+	
+	$pdf->Cell(1.50,0.15, 'Individual', 0, 0, 'C');
+	
+	$pdf->Cell(0.15,0.15, $_POST['16-Was_the_service_provided_individually_or_in_a_group_(no_more_than_5):_Group'] ? 'X' : ' ', 1, 0, 'C');
+	
+	$pdf->Cell(1.50,0.15, 'Group', '', 0, 'C');
+	
+	$pdf->Cell(1.70,0.2,'  ','R',1,'L');
+	
+	$pdf->Cell(7.0,0.2,'','LR',1);
+
+
+
+	$pdf->SetFont('Arial','B',11);
+	$pdf->MultiCell(7.0,0.2,"If group format, was the curriculum and syllabus approved by the District Office? (Maintain documentation of this approval in agency records)",'LR','J',0);
+	
+	$pdf->Cell(7.0,0.2,'','LR',1);
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(2.00,0.2,'  ','L',0);
+	
+	$pdf->Cell(0.15,0.15, $_POST['17-If_group_format,_was_the_curriculum_and_syllabus_approved_by_the_District_Office?:_Yes'] ? 'X' : ' ', 1, 0, 'C');
+	
+	$pdf->Cell(1.50,0.15, 'Yes', 0, 0, 'C');
+	
+	$pdf->Cell(0.15,0.15, $_POST['18-If_group_format,_was_the_curriculum_and_syllabus_approved_by_the_District_Office?:_No'] ? 'X' : ' ', 1, 0, 'C');
+	
+	$pdf->Cell(1.50,0.15, 'No', '', 0, 'C');
+	
+	$pdf->Cell(1.70,0.2,'  ','R',1,'L');
+	
+	$pdf->Cell(7.0,0.2,'','LR',1);
+
+	$pdf->SetFont('Arial','B',11);
+	$pdf->MultiCell(7.0,0.4,"Does the Self-Advocacy for Employment report include the following topics?",'LR','J',0);
+
+	
+
+	//====
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(2.75,0.2,'Career and Employment Exploration','L',0,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(0.15,0.15, $_POST['19-Does_the_Self-Advocacy_for_Employment_report_include_Career_and_Employment_Exploration:_Yes'] ? 'X' : ' ',1,0,'C');
+	
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+	
+	$pdf->Cell(1.5,0.2,'Yes',0,0,'L');
+	
+	$pdf->Cell(0.15,0.15, $_POST['20-Does_the_Self-Advocacy_for_Employment_report_include_Career_and_Employment_Exploration:_No'] ? 'X' : ' ',1,0,'C');
+	
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+	
+	$pdf->Cell(2.0,0.2,'No',0,0,'L');
+	
+	$pdf->Cell(0.05,0.2,'','R',1,'C');
+	//====
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+
+	//====
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(2.5,0.2,'Personal Strengths','L',0,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(0.15,0.15, $_POST['21-Does_the_Self-Advocacy_for_Employment_report_include_Personal_Strengths:_Yes'] ? 'X' : ' ',1,0,'C');
+	
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+	
+	$pdf->Cell(1.5,0.2,'Yes',0,0,'L');
+	
+	$pdf->Cell(0.15,0.15, $_POST['22-Does_the_Self-Advocacy_for_Employment_report_include_Personal_Strengths:_No'] ? 'X' : ' ',1,0,'C');
+	
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+	
+	$pdf->Cell(2.0,0.2,'No',0,0,'L');
+	
+	$pdf->Cell(0.3,0.2,'','R',1,'C');
+	//====
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+	//====
+	$pdf->SetFont('Arial','',11);
+		
+	$pdf->Cell(2.5,0.2,'Talents','L',0,'L');
+
+	$pdf->SetFont('Arial','',11);
+
+	$pdf->Cell(0.15,0.15, $_POST['23-Does_the_Self-Advocacy_for_Employment_report_include_Talents:_Yes'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(1.5,0.2,'Yes',0,0,'L');
+
+	$pdf->Cell(0.15,0.15, $_POST['24-Does_the_Self-Advocacy_for_Employment_report_include_Talents:_No'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(2.0,0.2,'No',0,0,'L');
+
+	$pdf->Cell(0.3,0.2,'','R',1,'C');
+	//====
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+
+	//====
+	$pdf->SetFont('Arial','',11);
+		
+	$pdf->Cell(2.5,0.2,'Compensatory Skills','L',0,'L');
+
+	$pdf->SetFont('Arial','',11);
+
+	$pdf->Cell(0.15,0.15, $_POST['25-Does_the_Self-Advocacy_for_Employment_report_include_Compensatory_Skills:_Yes'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(1.5,0.2,'Yes',0,0,'L');
+
+	$pdf->Cell(0.15,0.15, $_POST['26-Does_the_Self-Advocacy_for_Employment_report_include_Compensatory_Skills:_No'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(2.0,0.2,'No',0,0,'L');
+
+	$pdf->Cell(0.3,0.2,'','R',1,'C');
+	//====
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+	//====
+	$pdf->SetFont('Arial','',11);
+		
+	$pdf->Cell(2.5,0.2,'Natural Supports','L',0,'L');
+
+	$pdf->SetFont('Arial','',11);
+
+	$pdf->Cell(0.15,0.15, $_POST['27-Does_the_Self-Advocacy_for_Employment_report_include_Natural_Supports:_Yes'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(1.5,0.2,'Yes',0,0,'L');
+
+	$pdf->Cell(0.15,0.15, $_POST['28--Does_the_Self-Advocacy_for_Employment_report_include_Natural_Supports:_No'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(2.0,0.2,'No',0,0,'L');
+
+	$pdf->Cell(0.3,0.2,'','R',1,'C');
+	//====
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+	//====
+	$pdf->SetFont('Arial','',11);
+		
+	$pdf->Cell(3.0,0.2,'Disability Specific Accommodation Needs','L',0,'L');
+
+	$pdf->SetFont('Arial','',11);
+
+	$pdf->Cell(0.15,0.15, $_POST['29-Does_the_Self-Advocacy_for_Employment_report_include_Disability_Specific_Accommodation_Needs:_Yes'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(1.5,0.2,'Yes',0,0,'L');
+
+	$pdf->Cell(0.15,0.15, $_POST['30-Does_the_Self-Advocacy_for_Employment_report_include_Disability_Specific_Accommodation_Needs:_No'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(2.0,0.2,'No',0,0,'L');
+
+	$pdf->Cell(0,0.2,'','R',1,'C');
+	//====
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+
+	//====
+	$pdf->SetFont('Arial','',11);
+		
+	$pdf->Cell(3.25,0.2,'How to request a Reasonable Accommodation','L',0,'L');
+
+	$pdf->SetFont('Arial','',11);
+
+	$pdf->Cell(0.15,0.15, $_POST['31-Does_the_Self-Advocacy_for_Employment_report_include_How_to_request_a_Reasonable_Accommodation:_Yes'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(1.5,0.2,'Yes',0,0,'L');
+
+	$pdf->Cell(0.15,0.15, $_POST['32-Does_the_Self-Advocacy_for_Employment_report_include_How_to_request_a_Reasonable_Accommodation:_No'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(2.0,0.2,'No',0,0,'L');
+
+	$pdf->Cell(0,0.2,'','R',1,'C');
+	//====
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+	//====
+	$pdf->SetFont('Arial','',11);
+		
+	$pdf->Cell(2.5,0.2,'Disclosure of Disability','L',0,'L');
+
+	$pdf->SetFont('Arial','',11);
+
+	$pdf->Cell(0.15,0.15, $_POST['33-Does_the_Self-Advocacy_for_Employment_report_include_Disclosure_of_Disability:_Yes'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(1.5,0.2,'Yes',0,0,'L');
+
+	$pdf->Cell(0.15,0.15, $_POST['34-Does_the_Self-Advocacy_for_Employment_report_include_Disclosure_of_Disability:_No'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(2.0,0.2,'No',0,0,'L');
+
+	$pdf->Cell(0.3,0.2,'','R',1,'C');
+	//====
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+	//====
+	$pdf->SetFont('Arial','',11);
+		
+	$pdf->Cell(2.75,0.2,'Employment Rights under Title 1 ADA','L',0,'L');
+
+	$pdf->SetFont('Arial','',11);
+
+	$pdf->Cell(0.15,0.15, $_POST['35-Does_the_Self-Advocacy_for_Employment_report_include_Employment_Rights_under_Title_1_ADA:_Yes'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(1.5,0.2,'Yes',0,0,'L');
+
+	$pdf->Cell(0.15,0.15, $_POST['36-Does_the_Self-Advocacy_for_Employment_report_include_Employment_Rights_under_Title_1_ADA:_No'] ? 'X' : ' ',1,0,'C');
+
+	$pdf->Cell(0.2,0.2,'',0,0,'L');
+
+	$pdf->Cell(2.0,0.2,'No',0,0,'L');
+
+	$pdf->Cell(0.05,0.2,'','R',1,'C');
+	//====
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(7.0,0.2,'','LR',1,'L');
+	
+	$pdf->Cell(7.0,0.2,"If any of the above have not been addressed, specify why:",'LR',1,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->MultiCell(7.0,0.2, $_POST["37-If_any_of_the_above_have_not_been_addressed,_specify_why"],'LR','j', 0);
+
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+
+	$pdf->SetFont('Arial','B',11);
+	$pdf->Cell(7.0,0.2,'Has the participant actively demonstrated increased competency in the above areas?','LR',1,'L');
+	
+	$pdf->Cell(7.0,0.2,'','LR',1);
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(2.00,0.2,'  ','L',0);
+	
+	$pdf->Cell(0.15,0.15, $_POST['38-Has_the_participant_actively_demonstrated_increased_competency_in_the_above_areas:_Yes'] ? 'X' : ' ', 1, 0, 'C');
+	
+	$pdf->Cell(1.50,0.15, 'Yes', 0, 0, 'C');
+	
+	$pdf->Cell(0.15,0.15, $_POST['39-Has_the_participant_actively_demonstrated_increased_competency_in_the_above_areas:_No'] ? 'X' : ' ', 1, 0, 'C');
+	
+	$pdf->Cell(1.50,0.15, 'No', '', 0, 'C');
+	
+	$pdf->Cell(1.70,0.2,'  ','R',1,'L');
+
+
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(7.0,0.2," Please summarize:",'LR',1,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->MultiCell(7.0,0.2, $_POST["40-Has_the_participant_actively_demonstrated_increased_competency_in_the_above_areas:_Please_Summarize"],'LR','j', 0);
+
+
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+
+
+
+	$pdf->SetFont('Arial','B',11);
+	$pdf->Cell(7.0,0.2,'Does Self-Advocacy for Employment report include a checklist of newly mastered skills','LR',1,'L');
+	$pdf->Cell(7.0,0.2,'and competencies the participant has attained?','LR',1,'L');
+	$pdf->Cell(7.0,0.2,'','LR',1);
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(2.00,0.2,'  ','L',0);
+	
+	$pdf->Cell(0.15,0.15, $_POST['41-Does_Self-Advocacy_for_Employment_Report_Include_a_checklist_of_newly_mastered_skills_and_competencies_the_participant_has_attained:_Yes'] ? 'X' : ' ', 1, 0, 'C');
+	
+	$pdf->Cell(1.50,0.15, 'Yes', 0, 0, 'C');
+	
+	$pdf->Cell(0.15,0.15, $_POST['42-Does_Self-Advocacy_for_Employment_Report_Include_a_checklist_of_newly_mastered_skills_and_competencies_the_participant_has_attained:_No'] ? 'X' : ' ', 1, 0, 'C');
+	
+	$pdf->Cell(1.50,0.15, 'No', '', 0, 'C');
+	
+	$pdf->Cell(1.70,0.2,'  ','R',1,'L');
+
+
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(7.0,0.2," Please summarize:",'LR',1,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->MultiCell(7.0,0.2, $_POST["43-Does_Self-Advocacy_for_Employment_Report_Include_a_checklist_of_newly_mastered_skills_and_competencies_the_participant_has_attained:_Comments"],'LR','j', 0);
+	
+	$pdf->Cell(7.0,0.2,'','LBR',1,'C');
+	
+	
+	// 	Start of FOOTER-1 Area
+	$pdf->Ln();
+	
+	
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(1.0,0.2,'Completed By: ', 0, 1, 'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(4.0,0.2,'', 'B', 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,$_POST['44-Signature_Date*'], 'B', 1, 'L');
+	
+	$pdf->Cell(4.0,0.2,'Qualified Staff Signature', 0, 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,'Date', 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(4.0,0.2,$_POST['45-Printed_Name*'], 'B', 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,$_POST['46-Title*'], 'B', 1, 'L');
+	
+	$pdf->Cell(4.0,0.2,'Printed Name', 0, 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,'Title', 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	$pdf->Cell(1.25,0.2,'Phone Number:', 0, 0, 'L');
+	
+	$pdf->Cell(2.75,0.2,$_POST['47-Phone_Number*'], 0, 0, 'L');
+	
+	$pdf->Cell(0.50,0.2,'', 0, 0, 'C');
+	
+	$pdf->Cell(0.50,0.2,'Email:', 0, 0, 'L');
+	
+	$pdf->Cell(2.00,0.2,$_POST['48-Email*'], 0, 1, 'L');
 	
 	$pdf->Ln();
 	
