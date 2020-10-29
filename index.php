@@ -242,13 +242,15 @@ function renderForm_SERVICENOTE() {
 	
 	$pdf->Cell(0.25,0.2,'','L',0,'L', false);
 	
-	$pdf->Cell(1,0.2,'Attendees:',0,0,'L', false);
+	$pdf->Cell(7.25,0.2,'Attendees:','R',1,'L');
 	
 	$pdf->SetFont('Times','',12);
-	
-	$pdf->Cell(0,0.2,$_POST['4-Attendees'], 'R', 0, 'L', false);
-	
-	$pdf->Ln();
+
+	$pdf->Cell(0.25,1.2,'','L',0,'L', false);
+	$pdf->MultiCell(7.25,0.2,$_POST['4-Attendees'],'R','J',0);
+
+
+	$pdf->Cell(0,0.2,'','LR',1,'L', false);
 	
 	
 	$pdf->SetFont('Times','B',12);
