@@ -2348,10 +2348,8 @@ function renderForm_AVMPAR($data) {
 	
 	$pdf->SetFont('Arial','',10);
 	
-	
-	$pdf->Cell(7.00,0.2,$_POST['24-Comments*'],'LBR',1,'L');
-	
-	
+
+	$pdf->MultiCell(7.0,0.2,$_POST['24-Comments*'],'LBR','J',0);
 	
 	$pdf->Ln();
 	
@@ -2411,9 +2409,7 @@ function renderForm_AVMPAR($data) {
 	
 	$pdf->SetFont('Arial','',10);
 	
-	
-	$pdf->Cell(7.00,0.2,$_POST['30-Comments'],'LBR',1,'L');
-	
+	$pdf->MultiCell(7.0,0.2,$_POST['30-Comments*'],'LBR','J',0);
 	
 	
 	$pdf->Ln();
@@ -2473,11 +2469,8 @@ function renderForm_AVMPAR($data) {
 	
 	
 	$pdf->SetFont('Arial','',10);
-	
-	
-	$pdf->Cell(7.00,0.2,$_POST['36-Comments'],'LBR',1,'L');
-	
-	
+
+	$pdf->MultiCell(7.0,0.2,$_POST['36-Comments*'],'LBR','J',0);
 	
 	$pdf->Ln();
 	
@@ -2538,7 +2531,7 @@ function renderForm_AVMPAR($data) {
 	$pdf->SetFont('Arial','',10);
 	
 	
-	$pdf->Cell(7.00,0.2,$_POST['42-Comments'],'LBR',1,'L');
+	$pdf->MultiCell(7.0,0.2,$_POST['42-Comments*'],'LBR','J',0);
 	
 	
 	
@@ -2601,7 +2594,7 @@ function renderForm_AVMPAR($data) {
 	$pdf->SetFont('Arial','',10);
 	
 	
-	$pdf->Cell(7.00,0.2,$_POST['48-Comments'],'LBR',1,'L');
+	$pdf->MultiCell(7.0,0.2,$_POST['48-Comments*'],'LBR','J',0);
 	
 	
 	
@@ -2664,7 +2657,7 @@ function renderForm_AVMPAR($data) {
 	$pdf->SetFont('Arial','',10);
 	
 	
-	$pdf->Cell(7.00,0.2,$_POST['54-Comments'],'LBR',1,'L');
+	$pdf->MultiCell(7.0,0.2,$_POST['54-Comments*'],'LBR','J',0);
 	
 	
 	
