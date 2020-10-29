@@ -120,7 +120,7 @@ function generateform() {
 				renderForm_127X($data);
 				break;
 			case '125X126X':
-				renderForm_125X126XX($data);
+				renderForm_125X126X($data);
 				break;
 			case '122X':
 				renderForm_122X($data);
@@ -4158,7 +4158,7 @@ function renderForm_124X($data) {
 }
 
 
-function renderForm_125X126XX($data) {
+function renderForm_125X126X($data) {
 	
 	$pdf = new FPDF('P', 'in', 'Letter');
 
