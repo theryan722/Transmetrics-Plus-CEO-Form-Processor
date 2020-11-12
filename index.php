@@ -137,6 +137,9 @@ function generateform() {
 			case '123X':
 				renderForm_123X($data);
 				break;
+			case '557X':
+				renderForm_557X($data);
+				break;
 			case '124X':
 				renderForm_124X($data);
 				break;
@@ -6494,6 +6497,402 @@ function renderForm_123X($data) {
 	$pdf->Cell(2.00,0.2,$_POST['48-Email*'], 0, 1, 'L');
 	
 	$pdf->Ln();
+	
+	$pdf->Ln();
+	
+	//=	=========================
+	$pdf->Output('report.pdf', 'I');
+	
+}
+
+function renderForm_557X($data) {
+
+	$pdf = new FPDF('P', 'in', 'Letter');
+	
+	$pdf->SetCreator('CEO, Inc.');
+	
+	$pdf->SetAuthor('CEO, Inc.');
+	
+	$pdf->SetTitle('Report');
+	
+	//=	=========================
+	$pdf->AddPage('P','Letter');
+	
+	$pdf->SetFillColor(200,200,200);
+	
+	$pdf->SetMargins(0.75,0.25,0.75);
+	
+	$pdf->Image(ACCESLOGO,3.75,0.25,1.0,1.0);
+	
+	$pdf->Ln(0.85);
+	
+	
+	$pdf->SetFont('Arial','B',10);
+	
+	$pdf->Cell(7.0,0.2,'VR-557X',0,0,'C');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->SetFont('Arial', 'B', 14);
+	
+	$pdf->Cell(7.0,0.2,'Pre-Employment Transition Services (Pre-ETS)',0,0,'C');
+	
+	$pdf->Ln(0.3);
+	
+	$pdf->SetFont('Arial','B',13);
+	
+	$pdf->Cell(7.0,0.2,'557X- Work-Based Learning Development',0,1,'C');
+	
+	$pdf->Ln(0.3);
+	
+	
+	// 	The section below COMMON-1 is on all documents
+	
+	$pdf->SetFont('Arial', '', 10);
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'AV#:', 'LTB', 0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(7 digits)','TB', 0, 'L');
+	
+	$pdf->Cell(1.25,0.2,$data->av_num,'TBR', 1, 'L');
+	
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'ACCES-VR ID#:','LTB',0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(6 digits)','TB', 0, 'L');
+	
+	$pdf->Cell(1.25,0.2,$data->acces_id,'TBR', 1, 'L');
+	
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'CAMS ID #:', 'LTB', 0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(10 digits)', 'TB', 0,'L');
+	
+	$pdf->Cell(1.25,0.2,$data->cams_id, 'TBR', 1,'L');
+	
+	
+	$pdf->Ln();
+	
+	
+	$pdf->SetFont('Arial','',10);
+	
+	$pdf->Cell(1.2,0.2,'VR District Office:','LT',0,'L');
+	
+	$pdf->Cell(2.3,0.2,$data->dist_office,'TR',0,'L');
+	
+	
+	$pdf->Cell(1.0,0.2,'Provider:','LT',0,'L');
+	
+	$pdf->Cell(2.5,0.2,$data->provider,'TR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(1.2,0.2,'VRC Name:','LT',0,'L');
+	
+	$pdf->Cell(2.3,0.2,$data->vr_counselor,'TR',0,'L');
+	
+	
+	$pdf->Cell(1.5,0.2,'NYS Fiscal System ID:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,'1000018463','TRB',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(3.5,0.2,'','LTBR',0,'L');
+	
+	$pdf->Cell(1.0,0.2,'Report Date:','LB',0,'L');
+	
+	$pdf->Cell(2.5,0.2,$_POST['8-Report_Date*'],'BR',0,'L');
+	
+	$pdf->Ln();
+	
+	// 	End of COMMON-1 Area
+	// 	Start of COMMON-2a Area  slight variations between forms
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(1.5,0.2,'Student First Name:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$data->stu_fname ,'TBR',0,'L');
+	
+	$pdf->Cell(1.5,0.2,'Student Last Name:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$data->stu_lname ,'TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(1.5,0.2,'Student Phone Number: ','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$_POST['11-Student_Phone_Number'],'TBR',0,'L');
+	
+	$pdf->Cell(1.5,0.2,'Student Age: ','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$_POST['13-Student_Age*'] ,'TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(2.0,0.2,'Student Email Address: ','LTB',0,'L');
+	
+	$pdf->Cell(5.0,0.2,$_POST['12-Student_Email_Address'],'TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	// 	End of COMMON-2a Area
+	
+	// 	Start of CONTENT Area                        
+	
+	$pdf->Ln();
+	
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(0.75,0.2,'',0,0,'C');
+
+	$pdf->Cell(0.15,0.15,$_POST['14-Paid_Experience'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.35,0.2,'',0,0,'C');
+	
+	$pdf->Cell(3.0,0.2,'Paid Experience',0,0,'L');
+	
+	
+	$pdf->Cell(0.15,0.15,$_POST['15-Unpaid_Experience'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.35,0.2,'',0,0,'C');
+	
+	$pdf->Cell(3.0,0.2,'Unpaid Experience',0,1,'L');
+	
+	$pdf->Cell(0.75,0.2,'',0,0,'C');
+
+	$pdf->Cell(0.15,0.15,$_POST['16-Individual'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.35,0.2,'',0,0,'C');
+	
+	$pdf->Cell(3.0,0.2,'Individual',0,0,'L');
+	
+	
+	$pdf->Cell(0.15,0.15,$_POST['17-Group'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.35,0.2,'',0,0,'C');
+	
+	$pdf->Cell(3.0,0.2,'Group',0,1,'L');
+
+	$pdf->Ln();
+
+	
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(2.5,0.2,'Start Date of Work Experience:',0,0,'L');
+	
+	$pdf->SetFont('Arial','',12);
+	
+	$pdf->Cell(4.0,0.2,$_POST['18-Start_Date_of_Work_Experience*'],0,1,'L');
+
+	$pdf->Ln();
+	
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(4.0,0.2,'Anticipated Completion Date of Work Experience:',0,0,'L');
+	
+	$pdf->SetFont('Arial','',12);
+	
+	$pdf->Cell(4.0,0.2,$_POST['19-Anticipated_Completion_Date_of_Work_Experience*'],0,1,'L');
+
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(4.0,0.2,'Indicate Last Date of Contact if Drop Out Applies:',0,0,'L');
+	
+	$pdf->SetFont('Arial','',12);
+	
+	$pdf->Cell(4.0,0.2,$_POST['20-Indicate_Last_Date_of_Contact_if_Drop_Out_Applies'],0,1,'L');
+
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(3.0,0.2,'Employer-based Work Experience Business Name and Location:',0,2,'L');
+	
+	$pdf->SetFont('Arial','',12);
+	
+	$pdf->MultiCell(6.50,0.2,$_POST['21-Employer-based_Work_Experience_Business_Name_and_Location*'], 0, 'J', 0);
+
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(3.0,0.2,'Anticipated Work Experience Schedule:',0,2,'L');
+	
+	$pdf->SetFont('Arial','',12);
+	
+	$pdf->MultiCell(6.50,0.2,$_POST['22-Anticipated_Work_Experience_Schedule*'], 0, 'J', 0);
+
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(3.0,0.2,'Below Describe the Work Experience in Detail',0,2,'L');
+	
+	$pdf->SetFont('Arial','',12);
+
+	$pdf->MultiCell(6.50,0.2,$_POST['23-Describe_the_Work_Experience_in_Detail*'], 0, 'J', 0);
+
+	
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(3.0,0.2,'Please describe activities that will be completed in this work experience:',0,2,'L');
+	$pdf->SetFont('Arial','',12);
+
+	$pdf->Cell(0.15,0.15,$_POST['24-Describe_activities_that_will_be_completed_in_this_work_experience:_Workplace_Tours_/_Field_Trips'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.15,0.2,'',0,0,'C');
+	$pdf->Cell(3.20,0.2,'Workplace Tours / Field Trips',0,2,'L');
+	$pdf->Cell(4.65,0.2,'Describe:', 0, 2, 'L');
+	$pdf->MultiCell(6.50,0.2,$_POST['25-Describe'], 0, 'J', 0);
+
+	$pdf->Cell(0.15,0.15,$_POST['26-Describe_activities_that_will_be_completed_in_this_work_experience:_Job_Shadowing'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.15,0.2,'',0,0,'C');
+	$pdf->Cell(3.20,0.2,'Job Shadowing',0,2,'L');
+	$pdf->Cell(4.65,0.2,'Describe:', 0, 2, 'L');
+	$pdf->MultiCell(6.50,0.2,$_POST['27-Describe'], 0, 'J', 0);
+
+	$pdf->Cell(0.15,0.15,$_POST['28-Describe_activities_that_will_be_completed_in_this_work_experience:_Career_Mentorship'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.15,0.2,'',0,0,'C');
+	$pdf->Cell(3.20,0.2,'Career Mentorship',0,2,'L');
+	$pdf->Cell(4.65,0.2,'Describe:', 0, 2, 'L');
+	$pdf->MultiCell(6.50,0.2,$_POST['29-Describe'], 0, 'J', 0);
+
+	$pdf->Cell(0.15,0.15,$_POST['30-Describe_activities_that_will_be_completed_in_this_work_experience:_Informational_Interviews'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.15,0.2,'',0,0,'C');
+	$pdf->Cell(3.20,0.2,'Informational Interviews',0,2,'L');
+	$pdf->Cell(4.65,0.2,'Describe:', 0, 2, 'L');
+	$pdf->MultiCell(6.50,0.2,$_POST['31-Describe'], 0, 'J', 0);
+
+	$pdf->Cell(0.15,0.15,$_POST['32-Describe_activities_that_will_be_completed_in_this_work_experience:_Paid_or_Non-Paid_Internships'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.15,0.2,'',0,0,'C');
+	$pdf->Cell(3.20,0.2,'Paid or Non-Paid Internships',0,2,'L');
+	$pdf->Cell(4.65,0.2,'Describe:', 0, 2, 'L');
+	$pdf->MultiCell(6.50,0.2,$_POST['33-Describe'], 0, 'J', 0);
+
+	$pdf->Cell(0.15,0.15,$_POST['34-Describe_activities_that_will_be_completed_in_this_work_experience:_Volunteering'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.15,0.2,'',0,0,'C');
+	$pdf->Cell(3.20,0.2,'Volunteering',0,2,'L');
+	$pdf->Cell(4.65,0.2,'Describe:', 0, 2, 'L');
+	$pdf->MultiCell(6.50,0.2,$_POST['35-Describe'], 0, 'J', 0);
+
+	$pdf->Cell(0.15,0.15,$_POST['36-Describe_activities_that_will_be_completed_in_this_work_experience:_The_Importance_of_Networking'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.15,0.2,'',0,0,'C');
+	$pdf->Cell(3.20,0.2,'The Importance of Networking',0,2,'L');
+	$pdf->Cell(4.65,0.2,'Describe:', 0, 2, 'L');
+	$pdf->MultiCell(6.50,0.2,$_POST['37-Describe'], 0, 'J', 0);
+
+	$pdf->Cell(0.15,0.15,$_POST['38-Describe_activities_that_will_be_completed_in_this_work_experience:_Development_of_Introductory_Elevator_Speech_for_Networking'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.15,0.2,'',0,0,'C');
+	$pdf->Cell(3.20,0.2,'Development of Introductory Elevator Speech for Networking',0,2,'L');
+	$pdf->Cell(4.65,0.2,'Describe:', 0, 2, 'L');
+	$pdf->MultiCell(6.50,0.2,$_POST['39-Describe'], 0, 'J', 0);
+
+	$pdf->Cell(0.15,0.15,$_POST['40-Describe_activities_that_will_be_completed_in_this_work_experience:_Opportunities_to_Applying_the_Knowledge_and_Tools_Learned'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.15,0.2,'',0,0,'C');
+	$pdf->Cell(3.20,0.2,'Opportunities to Applying the Knowledge and Tools Learned',0,2,'L');
+	$pdf->Cell(4.65,0.2,'Describe:', 0, 2, 'L');
+	$pdf->MultiCell(6.50,0.2,$_POST['41-Describe'], 0, 'J', 0);
+
+	$pdf->Cell(0.15,0.15,$_POST['42-Describe_activities_that_will_be_completed_in_this_work_experience:_Career_Related_Competitions'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.15,0.2,'',0,0,'C');
+	$pdf->Cell(3.20,0.2,'Career Related Competitions',0,2,'L');
+	$pdf->Cell(4.65,0.2,'Describe:', 0, 2, 'L');
+	$pdf->MultiCell(6.50,0.2,$_POST['43-Describe'], 0, 'J', 0);
+	
+	$pdf->Ln();
+	$pdf->Ln();
+	$pdf->Ln();
+	$pdf->Ln();
+	
+	// 	Start of FOOTER-1 Area
+	
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(1.0,0.2,'Completed By: ', 0, 1, 'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(4.0,0.2,'', 'B', 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,$_POST['44-Signature_Date'], 'B', 1, 'L');
+	
+	$pdf->Cell(4.0,0.2,'Signature of Evaluator', 0, 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,'Date', 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(4.0,0.2,$_POST['45-Printed_Name*'], 'B', 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,$_POST['46-Title*'], 'B', 1, 'L');
+	
+	$pdf->Cell(4.0,0.2,'Printed Name', 0, 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,'Title', 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	$pdf->Cell(1.25,0.2,'Phone Number:', 0, 0, 'L');
+	
+	$pdf->Cell(2.75,0.2,$_POST['47-Phone_Number*'], 0, 0, 'L');
+	
+	$pdf->Cell(0.50,0.2,'', 0, 0, 'C');
+	
+	$pdf->Cell(0.50,0.2,'Email:', 0, 0, 'L');
+	
+	$pdf->Cell(2.00,0.2,$_POST['48-Email*'], 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	$pdf->Ln();
+	
+	
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(1.0,0.2,'Provider Supervisor: ', 0, 1, 'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(4.0,0.2,'', 'B', 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,$_POST['49-Provider_Supervisor_Signature_Date'], 'B', 1, 'L');
+	
+	$pdf->Cell(4.0,0.2,'Signature of Evaluator II', 0, 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,'Date', 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	$pdf->Cell(4.0,0.2,$_POST['50-Provider_Supervisor_Printed_Name'], 'B', 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,$_POST['51-Provider_Supervisor_Title'], 'B', 1, 'L');
+	
+	$pdf->Cell(4.0,0.2,'Printed Name', 0, 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,'Title', 0, 1, 'L');
 	
 	$pdf->Ln();
 	
