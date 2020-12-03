@@ -357,7 +357,7 @@ function renderForm_SERVICENOTE() {
 	
 	$pdf->Cell(4,0.2,$_POST['11-CEO_Staff_Name_and_Title*'],0,0,false);
 	
-	$pdf->Cell(4,0.2,date('m/d/Y'),0,0,false);
+	$pdf->Cell(4,0.2,$_POST['12-Signature_Date*'],0,0,false);
 	
 	$pdf->Ln();
 	
