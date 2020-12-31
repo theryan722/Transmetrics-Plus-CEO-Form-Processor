@@ -1726,92 +1726,92 @@ function renderForm_127X($data) {
 	$pdf->Ln();
 	
 	
-	$pdf->Cell(0.5,0.2,'1)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'1)',0,0,'L');
 	
-	$pdf->Cell(3.0,0.2,$_POST['16-List_Skill_1'],0,0,'L');
+	$pdf->Cell(3.25,0.2,$_POST['16-List_Skill_1'],0,0,'L');
 	
-	$pdf->Cell(0.5,0.2,'1)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'1)',0,0,'L');
 	
 	$pdf->Cell(3.0,0.2,$_POST['17-Progress_in_acquiring_skills_Rating_(1-4)_1'],0,1,'L');
 	
 	
-	$pdf->Cell(0.5,0.2,'2)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'2)',0,0,'L');
 	
-	$pdf->Cell(3.0,0.2,$_POST['18-List_Skill_2'],0,0,'L');
+	$pdf->Cell(3.25,0.2,$_POST['18-List_Skill_2'],0,0,'L');
 	
-	$pdf->Cell(0.5,0.2,'2)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'2)',0,0,'L');
 	
 	$pdf->Cell(3.0,0.2,$_POST['19-Progress_in_acquiring_skills_Rating_(1-4)_2'],0,1,'L');
 	
 	
-	$pdf->Cell(0.5,0.2,'3)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'3)',0,0,'L');
 	
-	$pdf->Cell(3.0,0.2,$_POST['20-List_Skill_3'],0,0,'L');
+	$pdf->Cell(3.25,0.2,$_POST['20-List_Skill_3'],0,0,'L');
 	
-	$pdf->Cell(0.5,0.2,'3)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'3)',0,0,'L');
 	
 	$pdf->Cell(3.0,0.2,$_POST['21-Progress_in_acquiring_skills_Rating_(1-4)_3'],0,1,'L');
 	
 	
-	$pdf->Cell(0.5,0.2,'4)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'4)',0,0,'L');
 	
-	$pdf->Cell(3.0,0.2,$_POST['22-List_Skill_4'],0,0,'L');
+	$pdf->Cell(3.25,0.2,$_POST['22-List_Skill_4'],0,0,'L');
 	
-	$pdf->Cell(0.5,0.2,'4)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'4)',0,0,'L');
 	
 	$pdf->Cell(3.0,0.2,$_POST['23-Progress_in_acquiring_skills_Rating_(1-4)_4'],0,1,'L');
 	
 	
-	$pdf->Cell(0.5,0.2,'5)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'5)',0,0,'L');
 	
-	$pdf->Cell(3.0,0.2,$_POST['24-List_Skill_5'],0,0,'L');
+	$pdf->Cell(3.25,0.2,$_POST['24-List_Skill_5'],0,0,'L');
 	
-	$pdf->Cell(0.5,0.2,'5)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'5)',0,0,'L');
 	
 	$pdf->Cell(3.0,0.2,$_POST['25-Progress_in_acquiring_skills_Rating_(1-4)_5'],0,1,'L');
 	
 	
-	$pdf->Cell(0.5,0.2,'6)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'6)',0,0,'L');
 	
-	$pdf->Cell(3.0,0.2,$_POST['26-List_Skill_6'],0,0,'L');
+	$pdf->Cell(3.25,0.2,$_POST['26-List_Skill_6'],0,0,'L');
 	
-	$pdf->Cell(0.5,0.2,'6)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'6)',0,0,'L');
 	
 	$pdf->Cell(3.0,0.2,$_POST['27-Progress_in_acquiring_skills_Rating_(1-4)_6'],0,1,'L');
 	
 	
-	$pdf->Cell(0.5,0.2,'7)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'7)',0,0,'L');
 	
-	$pdf->Cell(3.0,0.2,$_POST['28-List_Skill_7'],0,0,'L');
+	$pdf->Cell(3.25,0.2,$_POST['28-List_Skill_7'],0,0,'L');
 	
-	$pdf->Cell(0.5,0.2,'7)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'7)',0,0,'L');
 	
 	$pdf->Cell(3.0,0.2,$_POST['29-Progress_in_acquiring_skills_Rating_(1-4)_7'],0,1,'L');
 	
 	
-	$pdf->Cell(0.5,0.2,'8)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'8)',0,0,'L');
 	
-	$pdf->Cell(3.0,0.2,$_POST['30-List_Skill_8'],0,0,'L');
+	$pdf->Cell(3.25,0.2,$_POST['30-List_Skill_8'],0,0,'L');
 	
-	$pdf->Cell(0.5,0.2,'8)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'8)',0,0,'L');
 	
 	$pdf->Cell(3.0,0.2,$_POST['31-Progress_in_acquiring_skills_Rating_(1-4)_8'],0,1,'L');
 	
 	
-	$pdf->Cell(0.5,0.2,'9)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'9)',0,0,'L');
 	
-	$pdf->Cell(3.0,0.2,$_POST['32-List_Skill_9'],0,0,'L');
+	$pdf->Cell(3.25,0.2,$_POST['32-List_Skill_9'],0,0,'L');
 	
-	$pdf->Cell(0.5,0.2,'9)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'9)',0,0,'L');
 	
 	$pdf->Cell(3.0,0.2,$_POST['33-Progress_in_acquiring_skills_Rating_(1-4)_9'],0,1,'L');
 	
 	
-	$pdf->Cell(0.5,0.2,'10)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'10)',0,0,'L');
 	
-	$pdf->Cell(3.0,0.2,$_POST['34-List_Skill_10'],0,0,'L');
+	$pdf->Cell(3.25,0.2,$_POST['34-List_Skill_10'],0,0,'L');
 	
-	$pdf->Cell(0.5,0.2,'10)',0,0,'L');
+	$pdf->Cell(0.25,0.2,'10)',0,0,'L');
 	
 	$pdf->Cell(3.0,0.2,$_POST['35-Progress_in_acquiring_skills_Rating_(1-4)_10'],0,1,'L');
 	
