@@ -940,7 +940,7 @@ function renderForm_121X($data) {
 	
 	$pdf->Cell(1.0,0.2,'Report Date:','LB',0,'L');
 	
-	$pdf->Cell(2.5,0.2,date('m/d/Y',$service_date),'BR',0,'L');
+	$pdf->Cell(2.5,0.2,$_POST['8-Report_Date*'],'BR',0,'L');
 	
 	$pdf->Ln();
 	
