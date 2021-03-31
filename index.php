@@ -140,6 +140,9 @@ function generateform() {
 			case '557X':
 				renderForm_557X($data);
 				break;
+			case '559X':
+				renderForm_559X($data);
+				break;
 			case '124X':
 				renderForm_124X($data);
 				break;
@@ -6899,6 +6902,311 @@ function renderForm_557X($data) {
 	$pdf->Cell(4.0,0.2,'Printed Name', 0, 0, 'L');
 	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
 	$pdf->Cell(2.5,0.2,'Title', 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	//=	=========================
+	$pdf->Output('report.pdf', 'I');
+	
+}
+
+function renderForm_559X($data) {
+
+	$pdf = new FPDF('P', 'in', 'Letter');
+	
+	$pdf->SetCreator('CEO, Inc.');
+	
+	$pdf->SetAuthor('CEO, Inc.');
+	
+	$pdf->SetTitle('Report');
+	
+	//=	=========================
+	$pdf->AddPage('P','Letter');
+	
+	$pdf->SetFillColor(200,200,200);
+	
+	$pdf->SetMargins(0.75,0.25,0.75);
+	
+	$pdf->Image(ACCESLOGO,3.75,0.25,1.0,1.0);
+	
+	$pdf->Ln(0.85);
+	
+	
+	$pdf->SetFont('Arial','B',10);
+	
+	$pdf->Cell(7.0,0.2,'VR-559X',0,0,'C');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->SetFont('Arial', 'B', 14);
+	
+	$pdf->Cell(7.0,0.2,'Job Placement Services',0,0,'C');
+	
+	$pdf->Ln(0.3);
+	
+	$pdf->SetFont('Arial','B',13);
+	
+	$pdf->Cell(7.0,0.2,'559X-Work Experience Development',0,1,'C');
+	
+	$pdf->Ln(0.3);
+	
+	
+	// 	The section below COMMON-1 is on all documents
+	
+	$pdf->SetFont('Arial', '', 10);
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'AV#:', 'LTB', 0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(7 digits)','TB', 0, 'L');
+	
+	$pdf->Cell(1.25,0.2,$data->av_num,'TBR', 1, 'L');
+	
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'ACCES-VR ID#:','LTB',0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(6 digits)','TB', 0, 'L');
+	
+	$pdf->Cell(1.25,0.2,$data->acces_id,'TBR', 1, 'L');
+	
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'CAMS ID #:', 'LTB', 0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(10 digits)', 'TB', 0,'L');
+	
+	$pdf->Cell(1.25,0.2,$data->cams_id, 'TBR', 1,'L');
+	
+	
+	$pdf->Ln();
+	
+	
+	$pdf->SetFont('Arial','',10);
+	
+	$pdf->Cell(1.2,0.2,'VR District Office:','LT',0,'L');
+	
+	$pdf->Cell(2.3,0.2,$data->dist_office,'TR',0,'L');
+	
+	
+	$pdf->Cell(1.0,0.2,'Provider:','LT',0,'L');
+	
+	$pdf->Cell(2.5,0.2,$data->provider,'TR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(1.2,0.2,'VRC Name:','LT',0,'L');
+	
+	$pdf->Cell(2.3,0.2,$data->vr_counselor,'TR',0,'L');
+	
+	
+	$pdf->Cell(1.5,0.2,'NYS Fiscal System ID:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,'1000018463','TRB',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(3.5,0.2,'','LTBR',0,'L');
+	
+	$pdf->Cell(1.0,0.2,'Report Date:','LB',0,'L');
+	
+	$pdf->Cell(2.5,0.2,$_POST['8-Report_Date*'],'BR',0,'L');
+	
+	$pdf->Ln();
+	
+	// 	End of COMMON-1 Area
+	// 	Start of COMMON-2a Area  slight variations between forms
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(1.5,0.2,'Participant First Name:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$_POST['9-Participant_First_Name*'] ,'TBR',0,'L');
+	
+	$pdf->Cell(1.5,0.2,'Participant Last Name:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$_POST['10-Participant_Last_Name*'],'TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(1.7,0.2,'Participant Phone Number: ','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$_POST['11-Participant_Phone_Number'],'TB',0,'L');
+	
+	$pdf->Cell(3.3,0.2,'','TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(2.0,0.2,'Participant Email Address: ','LTB',0,'L');
+	
+	$pdf->Cell(5.0,0.2,$_POST['12-Participant_Email_Address'],'TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	// 	End of COMMON-2a Area
+	
+	// 	Start of CONTENT Area                        
+	
+	$pdf->Ln();
+	
+	$pdf->Ln();
+
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(3.0,0.2,"Participant's Vocational Goal:",0,2,'L');
+	
+	$pdf->SetFont('Arial','',12);
+
+	$pdf->MultiCell(6.50,0.2,$_POST["13-Participant's_Vocational_Goal*"], 0, 'J', 0);
+	
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Cell(0.75,0.2,'',0,0,'C');
+
+	$pdf->Cell(0.15,0.15,$_POST['14-Paid_Experience'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.35,0.2,'',0,0,'C');
+	
+	$pdf->Cell(3.0,0.2,'Paid Experience',0,0,'L');
+	
+	
+	$pdf->Cell(0.15,0.15,$_POST['15-Unpaid_Experience'] ? 'X' : ' ',1,0,'C');
+	$pdf->Cell(0.35,0.2,'',0,0,'C');
+	
+	$pdf->Cell(3.0,0.2,'Unpaid Experience',0,1,'L');
+	
+	$pdf->Cell(0.75,0.2,'',0,0,'C');
+
+	$pdf->Ln();
+
+	
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(2.5,0.2,'Start Date of Work Experience:',0,0,'L');
+	
+	$pdf->SetFont('Arial','',12);
+	
+	$pdf->Cell(4.0,0.2,$_POST['16-Start_Date_of_Work_Experience*'],0,1,'L');
+
+	$pdf->Ln();
+	
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(4.0,0.2,'Anticipated Completion Date of Work Experience:',0,0,'L');
+	
+	$pdf->SetFont('Arial','',12);
+	
+	$pdf->Cell(4.0,0.2,$_POST['17-Anticipated_Completion_Date_of_Work_Experience*'],0,1,'L');
+
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(4.0,0.2,'Indicate Last Date of Contact if Drop Out Applies:',0,0,'L');
+	
+	$pdf->SetFont('Arial','',12);
+	
+	$pdf->Cell(4.0,0.2,$_POST['18-Indicate_Last_Date_of_Contact_if_Drop_Out_Applies*'],0,1,'L');
+
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(3.0,0.2,'Employer-based Work Experience Business Name and Location:',0,2,'L');
+	
+	$pdf->SetFont('Arial','',12);
+	
+	$pdf->MultiCell(6.50,0.2,$_POST['19-Employer-based_Work_Experience_Business_Name*'], 0, 'J', 0);
+
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(3.0,0.2,'Work Experience Business Location:',0,2,'L');
+	
+	$pdf->SetFont('Arial','',12);
+	
+	$pdf->MultiCell(6.50,0.2,$_POST['20-Work_Experience_Business_Location*'], 0, 'J', 0);
+
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(3.0,0.2,'Anticipated Work Experience Schedule:',0,2,'L');
+	
+	$pdf->SetFont('Arial','',12);
+
+	$pdf->MultiCell(6.50,0.2,$_POST['21-Anticipated_Work_Experience_Schedule*'], 0, 'J', 0);
+
+	$pdf->Ln();
+
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(3.0,0.2,'Below Describe the Work Experience in Detail (Include Job Tasks):',0,2,'L');
+	
+	$pdf->SetFont('Arial','',12);
+
+	$pdf->MultiCell(6.50,0.2,$_POST['22-Below_Describe_the_Work_Experience_in_Detail_(Include_Job_Tasks)*'], 0, 'J', 0);
+	
+	$pdf->Ln();
+
+	
+	$pdf->Ln();
+	$pdf->Ln();
+	
+	// 	Start of FOOTER-1 Area
+	
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(1.0,0.2,'Completed By: ', 0, 1, 'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(4.0,0.2,'', 'B', 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,$_POST['23-Signature_Date'], 'B', 1, 'L');
+	
+	$pdf->Cell(4.0,0.2,'Signature of Evaluator', 0, 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,'Date', 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(4.0,0.2,$_POST['24-Printed_Name*'], 'B', 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,$_POST['25-Title*'], 'B', 1, 'L');
+	
+	$pdf->Cell(4.0,0.2,'Printed Name', 0, 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,'Title', 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	$pdf->Cell(1.25,0.2,'Phone Number:', 0, 0, 'L');
+	
+	$pdf->Cell(2.75,0.2,$_POST['26-Phone_Number*'], 0, 0, 'L');
+	
+	$pdf->Cell(0.50,0.2,'', 0, 0, 'C');
+	
+	$pdf->Cell(0.50,0.2,'Email:', 0, 0, 'L');
+	
+	$pdf->Cell(2.00,0.2,$_POST['27-Email*'], 0, 1, 'L');
 	
 	$pdf->Ln();
 	
