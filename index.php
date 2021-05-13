@@ -158,6 +158,9 @@ function generateform() {
 			case '921X':
 				renderForm_921X($data);
 				break;
+			case '790X':
+				renderForm_790X($data);
+				break;
 			case 'MONTHLYPLANNERCALENDAR':
 				renderForm_MONTHLYPLANNERCALENDAR($data);
 				break;
@@ -7491,6 +7494,265 @@ function renderForm_921X($data) {
 	$pdf->Cell(2.00,0.2,$_POST['26-Email*'], 0, 1, 'L');
 	
 	$pdf->Ln();
+	
+	$pdf->Ln();
+	
+	//=	=========================
+	$pdf->Output('report.pdf', 'I');
+	
+}
+
+function renderForm_790X($data) {
+	
+	$pdf = new FPDF('P', 'in', 'Letter');
+
+	$pdf->SetCreator('CEO, Inc.');
+	
+	$pdf->SetAuthor('CEO, Inc.');
+	
+	$pdf->SetTitle('Report');
+	
+	//=	=========================
+	$pdf->AddPage('P','Letter');
+	
+	
+	$pdf->SetFillColor(200,200,200);
+	
+	
+	$pdf->SetMargins(0.75,0.25,0.75);
+	
+	
+	$pdf->Image(ACCESLOGO,3.75,0.25,1.0,1.0);
+	
+	$pdf->Ln(0.85);
+	
+	
+	$pdf->SetFont('Arial','B',10);
+	
+	$pdf->Cell(7.0,0.2,'VR-790X',0,0,'C');
+	
+	$pdf->Ln(0.4);
+	
+	
+	$pdf->SetFont('Arial', 'B', 14);
+	
+	$pdf->Cell(7.0,0.2,'Adjunct Services',0,0,'C');
+	
+	$pdf->Ln(0.3);
+	
+	$pdf->Cell(7.0,0.2,'790X-Coaching Supports-Not Job Placement Related',0,1,'C');
+	
+	$pdf->Ln();
+	
+	
+	// 	The section below COMMON-1 is on all documents
+	
+	$pdf->SetFont('Arial', '', 10);
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'AV#:', 'LTB', 0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(7 digits)','TB', 0, 'L');
+	
+	$pdf->Cell(1.50,0.2,$data->av_num,'TBR', 1, 'L');
+	
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'ACCES-VR ID#:','LTB',0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(6 digits)','TB', 0, 'L');
+	
+	$pdf->Cell(1.50,0.2,$data->acces_id,'TBR', 1, 'L');
+	
+	
+	$pdf->Cell(1.75,0.2,'','',0,'L');
+	
+	$pdf->Cell(1.25,0.2,'CAMS ID #:', 'LTB', 0, 'L');
+	
+	$pdf->Cell(0.75,0.2,'(10 digits)', 'TB', 0,'L');
+	
+	$pdf->Cell(1.50,0.2,$data->cams_id, 'TBR', 1,'L');
+	
+	
+	$pdf->Ln();
+	
+	
+	$pdf->SetFont('Arial','',10);
+	
+	$pdf->Cell(1.2,0.2,'VR District Office:','LT',0,'L');
+	
+	$pdf->Cell(2.3,0.2,$data->dist_office,'TR',0,'L');
+	
+	
+	$pdf->Cell(1.0,0.2,'Provider:','LT',0,'L');
+	
+	$pdf->Cell(2.5,0.2,$data->provider,'TR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(1.2,0.2,'VRC Name:','LT',0,'L');
+	
+	$pdf->Cell(2.3,0.2,$data->vr_counselor,'TR',0,'L');
+	
+	
+	$pdf->Cell(1.5,0.2,'NYS Fiscal System ID:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,'1000018463','TRB',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(3.5,0.2,'','LTBR',0,'L');
+	
+	$pdf->Cell(1.0,0.2,'Report Month:','LB',0,'L');
+	
+	$pdf->Cell(2.5,0.2,$_POST['8-Report_Month*'],'BR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	// 	End of COMMON-1 Area
+	// 	Start of COMMON-2a Area  slight variations between forms
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(1.5,0.2,'Participant First Name:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$_POST['9-Participant_First_Name*'],'TBR',0,'L');
+	
+	$pdf->Cell(1.5,0.2,'Participant Last Name:','LTB',0,'L');
+	
+	$pdf->Cell(2.0,0.2,$_POST['10-Participant_Last_Name*'],'TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(2.0,0.2,'Participant Phone Number: ','LTB',0,'L');
+	
+	$pdf->Cell(5.0,0.2,$_POST['11-Participant_Phone_Number'],'TBR',0,'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(2.0,0.2,'Participant Email Address: ','LTB',0,'L');
+	
+	$pdf->Cell(5.0,0.2,$_POST['12-Participant_Email_Address'],'TBR',1,'L');
+	
+	$pdf->Ln();
+	
+	
+	// 	End of COMMON-2a Area
+	
+	// 	Start of CONTENT Area
+	
+	$pdf->Cell(7.0,0.2,'','LTR',1,'C');
+	
+	$pdf->SetFont('Arial','B',11);
+	
+	$pdf->Cell(2.2,0.2,'Units of Service Used this Month:','L',0,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	//$	pdf->Cell(0.4,0.2,'',0,0,'L');
+	
+	$pdf->Cell(0.75,0.2,$_POST['13-Units_of_Service_Used_this_Month*'],0,0,'R');
+	
+	$pdf->Cell(4.05,0.2,'','R',1,'C');
+	
+	
+	$pdf->Cell(7.0,0.2,'','LR',1,'C');
+	
+	
+	$pdf->SetFont('Arial','B',11);
+	
+	$pdf->Cell(3.3,0.2,'Total Number of Hours Authorized for 790X:','L',0,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	//$	pdf->Cell(0.4,0.2,'',0,0,'L');
+	
+	$pdf->Cell(5.0,0.2,$_POST['14-Total_Number_of_Hours_Authorized_for_790X*'],0,0,'L');
+	
+	$pdf->SetFont('Arial','B',11);
+	
+	$pdf->Cell(7.0,0.2,"Identified Outcome:",'LR',1,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->MultiCell(7.0,0.2, $_POST['15-Identified_Outcome*'],'LR','j', 0);
+	
+	
+	$pdf->SetFont('Arial','B',11);
+	
+	$pdf->Cell(7.0,0.2,"Describe Progress to Date (Identify barriers addressed and/or ongoing issues):",'LR',1,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->MultiCell(7.0,0.2, $_POST['16-Describe_Progress_to_Date_(Identify_barriers_addressed_and/or_ongoing_issues)*'],'LR','j', 0);
+
+
+	$pdf->SetFont('Arial','B',11);
+	
+	$pdf->Cell(7.0,0.2,"Recommended Next Steps to Reach Identified Outcome:",'LR',1,'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->MultiCell(7.0,0.2, $_POST['17-Recommended_Next_Steps_to_Reach_Identified_Outcome*'],'LR','j', 0);
+	
+	
+	$pdf->Cell(7.0,0.2,'','LBR',1,'C');
+	
+	
+	
+	
+	
+	// 	Start of FOOTER-1 Area
+	$pdf->Ln();
+	
+	
+	$pdf->SetFont('Arial','B',12);
+	
+	$pdf->Cell(1.0,0.2,'Completed By: ', 0, 1, 'L');
+	
+	$pdf->SetFont('Arial','',11);
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(4.0,0.2,'', 'B', 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,$_POST['18-Signature_Date'], 'B', 1, 'L');
+	
+	$pdf->Cell(4.0,0.2,'Qualified Staff Signature', 0, 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,'Date', 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	
+	$pdf->Cell(4.0,0.2,$_POST['19-Printed_Name*'], 'B', 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,$_POST['20-Title*'], 'B', 1, 'L');
+	
+	$pdf->Cell(4.0,0.2,'Printed Name', 0, 0, 'L');
+	$pdf->Cell(0.5,0.2,'', 0, 0, 'C');
+	$pdf->Cell(2.5,0.2,'Title', 0, 1, 'L');
+	
+	$pdf->Ln();
+	
+	$pdf->Cell(1.25,0.2,'Phone Number:', 0, 0, 'L');
+	
+	$pdf->Cell(2.75,0.2,$_POST['21-Phone_Number*'], 0, 0, 'L');
+	
+	$pdf->Cell(0.50,0.2,'', 0, 0, 'C');
+	
+	$pdf->Cell(0.50,0.2,'Email:', 0, 0, 'L');
+	
+	$pdf->Cell(2.00,0.2,$_POST['22-Email*'], 0, 1, 'L');
 	
 	$pdf->Ln();
 	
