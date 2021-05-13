@@ -7215,289 +7215,6 @@ function renderForm_559X($data) {
 	
 }
 
-//======= Monthly Planner Calendar =======
-
-function renderForm_MONTHLYPLANNERCALENDAR($data) {
-	$pdf = new FPDF('P', 'in', 'Letter');
-	//$this->load->library('Tpdf');
-	
-	//$pdf = new Tpdf('L', 'in', 'LEGAL', true, 'UTF-8', false);
-	$pdf->SetTitle('CEO Monthly Plan');
-	//$pdf->SetHeaderMargin(1.0);
-	//$pdf->SetTopMargin(.5);
-	//$pdf->setFooterMargin(.5);
-	//$pdf->SetAutoPageBreak(true);
-	//$pdf->SetAuthor('Author');
-	//$pdf->SetDisplayMode('real', 'default');
-	//$pdf->setPrintHeader(FALSE);
-	//$pdf->setPrintFooter(FALSE);
-	
-	//$pdf->AddPage('L','LETTER');
-	
-	//$pdf->Cell(10,0,'Some sample text',1,0);
-	//$pdf->Output('My-File-Name.pdf', 'I');
-	
-	if (is_object($data)) {
-		$pdf->AddPage('L','Letter');
-		$pdf->SetFillColor(200,200,200);
-		// Letter in landscape 279mm width by 216mm height
-		// Legal in landscape 356mm width by 216mm height
-		$pdf->SetMargins(0.5,0.25);
-	
-		$pdf->SetTitle('Monthly Planner' );
-		$pdf->SetCreator('CEO Transmetrics');
-		$pdf->SetAuthor('CEO, Inc.');
-	
-		$pdf->Image('images/logo60.png',3.1, 0.60, 0.72 );
-	
-		$pdf->SetFont('Times','B',14);
-		$pdf->Ln();
-	
-		$pdf->SetFont('Times','',9);
-	
-		$pdf->Cell( 2.0,0.2,'',0,0,'L');
-		$pdf->Cell( 6.0,0.2,'',0,0,'C');
-		$pdf->Cell( 2.0,0.2,'District / Group',0,1,'C');
-	
-		$pdf->SetFont('Times','B',14);
-	
-		$pdf->Cell( 2.0,0.2,'',0,0,'L');
-		$pdf->Cell( 6.0,0.2,'Career and Employment Options, Inc.',0,0,'C');
-		$pdf->SetFont('Helvetica','U',12);
-		$pdf->Cell( 2.0,0.2,$_POST['districtname'],0,1,'C');
-	
-		$pdf->SetFont('Helvetica','',14);
-		$pdf->Cell(2.0,0.2,$_POST['monthname'] . '-' . $_POST['year'],0,0,'C');
-		$pdf->SetFont('Times','B',14);
-		$pdf->Cell(6.0,0.2,'Monthly Planner',0,0,'C');
-		$pdf->SetFont('Helvetica','U',12);
-		$pdf->Cell(2.0,0.2,$_POST['name'],0,1,'C');
-	
-		$pdf->SetFont('Times','',14);
-		$pdf->Cell(5.0,0.2,'Consultant Name: ','',0,'R');
-		$pdf->Cell(5.0,0.2,$_POST['consultantname'],'',1,'L');
-	
-		// space between header and grid
-		$pdf->Ln(0.1);
-
-		$days = json_decode($_POST['days']);
-		
-		$rval = '';
-	
-		//This puts the day, month, and year in separate variables
-		$day = 1;
-		$month = intval($_POST['month']);
-		$year = intval($_POST['year']);
-	
-		//Here we generate the first day of the month
-		$first_day = mktime(0,0,0,$month, 1, $year) ;
-	
-		//This gets us the month name
-		$title = date('F', $first_day) ;
-	
-		// 2 OF 5 Days of the Week
-	
-		//Here you find out what day of the week the first day of the month falls on
-		$day_of_week = date('D', $first_day) ;
-	
-		//Once you know what day of the week it falls on, we know how many blank days occur before it. If the first day of the week is a
-		//Sunday, then it is zero
-	
-		$col = 0;
-		$row = 0;
-	
-		$dayno = 1;
-	
-		for ($rows = 0; $rows < 6; $rows++ ) {
-			for ($cols = 0; $cols < 7; $cols++ ) {
-				$calarray[$rows][$cols] = 0;
-			}
-		}
-	
-		switch($day_of_week) {
-			case "Sun": $blank = 0; break;
-			case "Mon": $blank = 1; break;
-			case "Tue": $blank = 2; break;
-			case "Wed": $blank = 3; break;
-			case "Thu": $blank = 4; break;
-			case "Fri": $blank = 5; break;
-			case "Sat": $blank = 6; break;
-		}
-	
-		$col = $blank;
-	
-		//We then determine how many days are in the current month
-		$days_in_month = cal_days_in_month(0, $month, $year) ;
-	
-		while ($dayno <= $days_in_month) {
-	
-			$calarray[$row][$col] = $dayno;
-			$dayno++;
-			$col++;
-			if ($col > 6) {
-				$col = 0;
-				$row++;
-			}
-		}
-	
-		// Before Drawing the Calendar, Fill an array with data from the database
-	
-		// 3 OF 5 Headings and Blank Days
-		$pdf->SetFont('Times', '', 8);
-	
-		$startX = $pdf->getX();
-	
-		//Here you start building the table heads
-		
-		$pdf->Cell( 2.0,0.2,'Mon',1, 0,'C', true);
-		$pdf->Cell( 2.0,0.2,'Tue',1, 0,'C', true);
-		$pdf->Cell( 2.0,0.2,'Wed',1, 0,'C', true);
-		$pdf->Cell( 2.0,0.2,'Thu',1, 0,'C', true);
-		$pdf->Cell( 2.0,0.2,'Fri',1, 0,'C', true);            
-	
-		$pdf->Ln();
-	
-		// Draw the Array of Boxes for the Days
-		$xpos = $pdf->getX();
-		$ypos = $pdf->getY();
-	
-		for($ycnt = 0; $ycnt < 6; $ycnt++) {
-			for($xcnt = 0; $xcnt < 6; $xcnt++) {  
-				if ($xcnt != 0 && $xcnt != 0 ) {
-					$pdf->Rect($xpos+($xcnt*2.0)-2.0,$ypos+$ycnt*1.0,2.0,1.0);
-				}
-			}
-		}
-	
-		// Reset X, Y to fill the Boxes and Days
-		$pdf->setX($xpos);
-		$pdf->setY($ypos);
-	
-		$xpos = $pdf->getX();
-		$ypos = $pdf->getY();
-		
-		/* 
-		 *  Xpos should be 0.5
-		 *  Ypos should be 1.49375
-		 */
-	
-		for($ycnt = 0; $ycnt < 6; $ycnt++) {
-			
-			$xpos = 0.5; // reset X before looping.                
-			for($xcnt = 0; $xcnt < 7; $xcnt++) {
-				
-				$arrayptr = 0;
-				
-				if ($calarray[$ycnt][$xcnt] != 0) {
-					
-					if ($xcnt != 0 && $xcnt != 6 ) {
-					
-						if (is_array($days)) {
-							for ($arrayctr = 0; $arrayctr < sizeof($days); $arrayctr++) {
-								if ( $days[$arrayctr]->day == $calarray[$ycnt][$xcnt] ) {
-									$arrayptr = $arrayctr;
-									break;
-								} 
-							}
-	
-							if ( $days[$arrayptr]->day == $calarray[$ycnt][$xcnt] ) {
-								renderForm_MONTHLYPLANNERCALENDAR_PrintDay($pdf, $xpos, $ypos, $xcnt, $ycnt, $days[$arrayctr]);
-							} else {
-								renderForm_MONTHLYPLANNERCALENDAR_PrintEmptyDay($pdf, $xpos, $ypos, $xcnt, $ycnt, $calarray[$ycnt][$xcnt] );
-							}
-	
-						} else {
-							renderForm_MONTHLYPLANNERCALENDAR_PrintEmptyDay($pdf, $xpos, $ypos, $xcnt, $ycnt, $calarray[$ycnt][$xcnt] );
-						}
-					}
-					
-				}
-				
-				$xpos = $xpos+2;
-				$pdf->setX($xpos);     
-				
-			}
-			
-			$ypos = $ypos+1.0;
-			$pdf->setY($ypos);
-		}
-	
-		$pdf->Output('monthlyplannercalendar.pdf', 'I');
-	
-	} else {
-		$pdf->AddPage('L','Letter');
-		$pdf->SetFillColor(200,200,200);
-		$pdf->SetFont('Helvetica','B',14);
-		$pdf->Cell(0,2,'No Data to Display',1,0,'C');
-		$pdf->Output('monthlyplannercalendar.pdf', 'I');
-	}
-	
-}
-
-function renderForm_MONTHLYPLANNERCALENDAR_PrintDay($pdf, $xpos, $ypos, $col, $row, $day) {
-			
-	$resety = $ypos;
-	
-	//adjust the $xpos due to the removal of Sat/Sun
-	$xpos = $xpos-2;
-	$pdf->setX($xpos);
-	// end of adjustment
-	
-	$pdf->SetFont('Times', 'BU', 8);                    
-	$pdf->Cell(1.8,0.1, $day->category ,0,0,'L',false);
-	$pdf->SetFont('Times', 'B', 8);                    
-	$pdf->Cell(0.2,0.1, $day->day, 1, 0, 'C', true);
-
-	$pdf->SetFont('Times', '', 8);                    
-	$ypos = $ypos + 0.2;
-	$pdf->setXY($xpos, $ypos);
-	$pdf->Cell(2.0,0.1, $day->event,0,0,'C',false);                            
-
-	$ypos = $ypos + 0.1;
-	$pdf->setXY($xpos, $ypos);
-	$pdf->Cell(2.0,0.1, $day->location,0,0,'C',false);                            
-
-	$ypos = $ypos + 0.1;
-	$pdf->setXY($xpos, $ypos);
-	$pdf->Cell(2.0,0.1, $day->location2,0,0,'C',false);                            
-
-	$ypos = $ypos + 0.1;
-	$pdf->setXY($xpos, $ypos);
-	$pdf->Cell(2.0,0.1, $day->contact->name,0,0,'C',false);                            
-
-	$ypos = $ypos + 0.1;
-	$pdf->setXY($xpos, $ypos);
-	$pdf->Cell(2.0,0.1, $day->contact->phone,0,0,'C',false);                            
-
-	$ypos = $ypos + 0.1;
-	$pdf->setXY($xpos, $ypos);
-	$pdf->Cell(2.0,0.1, $day->times,0,0,'C',false); 
-	$ypos = $resety;
-	$pdf->setY($ypos);                    
-	
-}
-
-function renderForm_MONTHLYPLANNERCALENDAR_PrintEmptyDay($pdf, $xpos, $ypos, $col, $row, $nday) {
-        
-	$resety = $ypos;
-	
-	//adjust the $xpos due to the removal of Sat/Sun
-	$xpos = $xpos-2;
-	$pdf->setX($xpos);
-	// end of adjustment        
-	
-	$pdf->SetFont('Times', 'BU', 8);                    
-	$pdf->Cell(1.8,0.1, '' ,0,0,'L',false);
-	$pdf->SetFont('Times', 'B', 8);                    
-	$pdf->Cell(0.2,0.1, $nday, 1, 0, 'C', true);
-
-	$pdf->SetFont('Times', '', 8);                    
-			
-	$ypos = $resety;
-	$pdf->setY($ypos);                    
-	
-}
-
 function renderForm_921X($data) {
 	
 	$pdf = new FPDF('P', 'in', 'Letter');
@@ -7779,6 +7496,289 @@ function renderForm_921X($data) {
 	
 	//=	=========================
 	$pdf->Output('report.pdf', 'I');
+	
+}
+
+//======= Monthly Planner Calendar =======
+
+function renderForm_MONTHLYPLANNERCALENDAR($data) {
+	$pdf = new FPDF('P', 'in', 'Letter');
+	//$this->load->library('Tpdf');
+	
+	//$pdf = new Tpdf('L', 'in', 'LEGAL', true, 'UTF-8', false);
+	$pdf->SetTitle('CEO Monthly Plan');
+	//$pdf->SetHeaderMargin(1.0);
+	//$pdf->SetTopMargin(.5);
+	//$pdf->setFooterMargin(.5);
+	//$pdf->SetAutoPageBreak(true);
+	//$pdf->SetAuthor('Author');
+	//$pdf->SetDisplayMode('real', 'default');
+	//$pdf->setPrintHeader(FALSE);
+	//$pdf->setPrintFooter(FALSE);
+	
+	//$pdf->AddPage('L','LETTER');
+	
+	//$pdf->Cell(10,0,'Some sample text',1,0);
+	//$pdf->Output('My-File-Name.pdf', 'I');
+	
+	if (is_object($data)) {
+		$pdf->AddPage('L','Letter');
+		$pdf->SetFillColor(200,200,200);
+		// Letter in landscape 279mm width by 216mm height
+		// Legal in landscape 356mm width by 216mm height
+		$pdf->SetMargins(0.5,0.25);
+	
+		$pdf->SetTitle('Monthly Planner' );
+		$pdf->SetCreator('CEO Transmetrics');
+		$pdf->SetAuthor('CEO, Inc.');
+	
+		$pdf->Image('images/logo60.png',3.1, 0.60, 0.72 );
+	
+		$pdf->SetFont('Times','B',14);
+		$pdf->Ln();
+	
+		$pdf->SetFont('Times','',9);
+	
+		$pdf->Cell( 2.0,0.2,'',0,0,'L');
+		$pdf->Cell( 6.0,0.2,'',0,0,'C');
+		$pdf->Cell( 2.0,0.2,'District / Group',0,1,'C');
+	
+		$pdf->SetFont('Times','B',14);
+	
+		$pdf->Cell( 2.0,0.2,'',0,0,'L');
+		$pdf->Cell( 6.0,0.2,'Career and Employment Options, Inc.',0,0,'C');
+		$pdf->SetFont('Helvetica','U',12);
+		$pdf->Cell( 2.0,0.2,$_POST['districtname'],0,1,'C');
+	
+		$pdf->SetFont('Helvetica','',14);
+		$pdf->Cell(2.0,0.2,$_POST['monthname'] . '-' . $_POST['year'],0,0,'C');
+		$pdf->SetFont('Times','B',14);
+		$pdf->Cell(6.0,0.2,'Monthly Planner',0,0,'C');
+		$pdf->SetFont('Helvetica','U',12);
+		$pdf->Cell(2.0,0.2,$_POST['name'],0,1,'C');
+	
+		$pdf->SetFont('Times','',14);
+		$pdf->Cell(5.0,0.2,'Consultant Name: ','',0,'R');
+		$pdf->Cell(5.0,0.2,$_POST['consultantname'],'',1,'L');
+	
+		// space between header and grid
+		$pdf->Ln(0.1);
+
+		$days = json_decode($_POST['days']);
+		
+		$rval = '';
+	
+		//This puts the day, month, and year in separate variables
+		$day = 1;
+		$month = intval($_POST['month']);
+		$year = intval($_POST['year']);
+	
+		//Here we generate the first day of the month
+		$first_day = mktime(0,0,0,$month, 1, $year) ;
+	
+		//This gets us the month name
+		$title = date('F', $first_day) ;
+	
+		// 2 OF 5 Days of the Week
+	
+		//Here you find out what day of the week the first day of the month falls on
+		$day_of_week = date('D', $first_day) ;
+	
+		//Once you know what day of the week it falls on, we know how many blank days occur before it. If the first day of the week is a
+		//Sunday, then it is zero
+	
+		$col = 0;
+		$row = 0;
+	
+		$dayno = 1;
+	
+		for ($rows = 0; $rows < 6; $rows++ ) {
+			for ($cols = 0; $cols < 7; $cols++ ) {
+				$calarray[$rows][$cols] = 0;
+			}
+		}
+	
+		switch($day_of_week) {
+			case "Sun": $blank = 0; break;
+			case "Mon": $blank = 1; break;
+			case "Tue": $blank = 2; break;
+			case "Wed": $blank = 3; break;
+			case "Thu": $blank = 4; break;
+			case "Fri": $blank = 5; break;
+			case "Sat": $blank = 6; break;
+		}
+	
+		$col = $blank;
+	
+		//We then determine how many days are in the current month
+		$days_in_month = cal_days_in_month(0, $month, $year) ;
+	
+		while ($dayno <= $days_in_month) {
+	
+			$calarray[$row][$col] = $dayno;
+			$dayno++;
+			$col++;
+			if ($col > 6) {
+				$col = 0;
+				$row++;
+			}
+		}
+	
+		// Before Drawing the Calendar, Fill an array with data from the database
+	
+		// 3 OF 5 Headings and Blank Days
+		$pdf->SetFont('Times', '', 8);
+	
+		$startX = $pdf->getX();
+	
+		//Here you start building the table heads
+		
+		$pdf->Cell( 2.0,0.2,'Mon',1, 0,'C', true);
+		$pdf->Cell( 2.0,0.2,'Tue',1, 0,'C', true);
+		$pdf->Cell( 2.0,0.2,'Wed',1, 0,'C', true);
+		$pdf->Cell( 2.0,0.2,'Thu',1, 0,'C', true);
+		$pdf->Cell( 2.0,0.2,'Fri',1, 0,'C', true);            
+	
+		$pdf->Ln();
+	
+		// Draw the Array of Boxes for the Days
+		$xpos = $pdf->getX();
+		$ypos = $pdf->getY();
+	
+		for($ycnt = 0; $ycnt < 6; $ycnt++) {
+			for($xcnt = 0; $xcnt < 6; $xcnt++) {  
+				if ($xcnt != 0 && $xcnt != 0 ) {
+					$pdf->Rect($xpos+($xcnt*2.0)-2.0,$ypos+$ycnt*1.0,2.0,1.0);
+				}
+			}
+		}
+	
+		// Reset X, Y to fill the Boxes and Days
+		$pdf->setX($xpos);
+		$pdf->setY($ypos);
+	
+		$xpos = $pdf->getX();
+		$ypos = $pdf->getY();
+		
+		/* 
+		 *  Xpos should be 0.5
+		 *  Ypos should be 1.49375
+		 */
+	
+		for($ycnt = 0; $ycnt < 6; $ycnt++) {
+			
+			$xpos = 0.5; // reset X before looping.                
+			for($xcnt = 0; $xcnt < 7; $xcnt++) {
+				
+				$arrayptr = 0;
+				
+				if ($calarray[$ycnt][$xcnt] != 0) {
+					
+					if ($xcnt != 0 && $xcnt != 6 ) {
+					
+						if (is_array($days)) {
+							for ($arrayctr = 0; $arrayctr < sizeof($days); $arrayctr++) {
+								if ( $days[$arrayctr]->day == $calarray[$ycnt][$xcnt] ) {
+									$arrayptr = $arrayctr;
+									break;
+								} 
+							}
+	
+							if ( $days[$arrayptr]->day == $calarray[$ycnt][$xcnt] ) {
+								renderForm_MONTHLYPLANNERCALENDAR_PrintDay($pdf, $xpos, $ypos, $xcnt, $ycnt, $days[$arrayctr]);
+							} else {
+								renderForm_MONTHLYPLANNERCALENDAR_PrintEmptyDay($pdf, $xpos, $ypos, $xcnt, $ycnt, $calarray[$ycnt][$xcnt] );
+							}
+	
+						} else {
+							renderForm_MONTHLYPLANNERCALENDAR_PrintEmptyDay($pdf, $xpos, $ypos, $xcnt, $ycnt, $calarray[$ycnt][$xcnt] );
+						}
+					}
+					
+				}
+				
+				$xpos = $xpos+2;
+				$pdf->setX($xpos);     
+				
+			}
+			
+			$ypos = $ypos+1.0;
+			$pdf->setY($ypos);
+		}
+	
+		$pdf->Output('monthlyplannercalendar.pdf', 'I');
+	
+	} else {
+		$pdf->AddPage('L','Letter');
+		$pdf->SetFillColor(200,200,200);
+		$pdf->SetFont('Helvetica','B',14);
+		$pdf->Cell(0,2,'No Data to Display',1,0,'C');
+		$pdf->Output('monthlyplannercalendar.pdf', 'I');
+	}
+	
+}
+
+function renderForm_MONTHLYPLANNERCALENDAR_PrintDay($pdf, $xpos, $ypos, $col, $row, $day) {
+			
+	$resety = $ypos;
+	
+	//adjust the $xpos due to the removal of Sat/Sun
+	$xpos = $xpos-2;
+	$pdf->setX($xpos);
+	// end of adjustment
+	
+	$pdf->SetFont('Times', 'BU', 8);                    
+	$pdf->Cell(1.8,0.1, $day->category ,0,0,'L',false);
+	$pdf->SetFont('Times', 'B', 8);                    
+	$pdf->Cell(0.2,0.1, $day->day, 1, 0, 'C', true);
+
+	$pdf->SetFont('Times', '', 8);                    
+	$ypos = $ypos + 0.2;
+	$pdf->setXY($xpos, $ypos);
+	$pdf->Cell(2.0,0.1, $day->event,0,0,'C',false);                            
+
+	$ypos = $ypos + 0.1;
+	$pdf->setXY($xpos, $ypos);
+	$pdf->Cell(2.0,0.1, $day->location,0,0,'C',false);                            
+
+	$ypos = $ypos + 0.1;
+	$pdf->setXY($xpos, $ypos);
+	$pdf->Cell(2.0,0.1, $day->location2,0,0,'C',false);                            
+
+	$ypos = $ypos + 0.1;
+	$pdf->setXY($xpos, $ypos);
+	$pdf->Cell(2.0,0.1, $day->contact->name,0,0,'C',false);                            
+
+	$ypos = $ypos + 0.1;
+	$pdf->setXY($xpos, $ypos);
+	$pdf->Cell(2.0,0.1, $day->contact->phone,0,0,'C',false);                            
+
+	$ypos = $ypos + 0.1;
+	$pdf->setXY($xpos, $ypos);
+	$pdf->Cell(2.0,0.1, $day->times,0,0,'C',false); 
+	$ypos = $resety;
+	$pdf->setY($ypos);                    
+	
+}
+
+function renderForm_MONTHLYPLANNERCALENDAR_PrintEmptyDay($pdf, $xpos, $ypos, $col, $row, $nday) {
+        
+	$resety = $ypos;
+	
+	//adjust the $xpos due to the removal of Sat/Sun
+	$xpos = $xpos-2;
+	$pdf->setX($xpos);
+	// end of adjustment        
+	
+	$pdf->SetFont('Times', 'BU', 8);                    
+	$pdf->Cell(1.8,0.1, '' ,0,0,'L',false);
+	$pdf->SetFont('Times', 'B', 8);                    
+	$pdf->Cell(0.2,0.1, $nday, 1, 0, 'C', true);
+
+	$pdf->SetFont('Times', '', 8);                    
+			
+	$ypos = $resety;
+	$pdf->setY($ypos);                    
 	
 }
 
